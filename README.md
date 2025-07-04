@@ -1,1 +1,3 @@
-This repo consists of the code i have written for practicing coding questions.
+Soong En Wong's coding practice. 
+
+Feel free to check it out!
