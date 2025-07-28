@@ -1,0 +1,10 @@
+O(n): Linear
+O(logn): Binary search
+O(n^2): For loop within a for loop
+
+As number of elements(n) increases, O(logn) is the best, then O(n), O(n^2) is not recommended.
+
+O(1): constant time, time complexity does not grow with the size of n
+O(n)
+O(logn): logarithmic search, marginal increases in time for new inputs
+O(n^2): the square of n for the amount of time
