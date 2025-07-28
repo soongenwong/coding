@@ -1,0 +1,4 @@
+During a technical interview, it is better to rely on the work of others than to code everything yourself. 
+
+Code written by others can be in the form of established libraries and data structures. 
+When possible, always use code that has been shown to be effective.
