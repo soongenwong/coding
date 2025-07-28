@@ -1,0 +1,3 @@
+Space Complexity = input space(memory for data) + auxiliary space(extra memory)
+
+When calculating Space complexity in terms of Big O notation, it follows the same format as Time Complexity. 
