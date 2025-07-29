@@ -1,0 +1,25 @@
+Lists and sets: 
+- Storing data structures. Storing values.
+- Using an array or linked list. 
+- Array list (predetermine the size of the list)
+- Linked list (automatically grows as you add one new value): must have head and tail
+- Lists can store repeating items and are ordered. 
+- Lists are slow because you have to go through a linear search, looking through each value one by one.
+- Sets store unique items and are fast to search. 
+- Sets use hash tables to store unique values: O(1) time complexity
+- Sets are good for small sample size but not large, due the the hashing function. There are more risks for clashing with more values. 
+- Sets are fast to search because it doesn't have to look through all values, it uses a hashing function to quickly determine where a value should be stored. 
+
+
+
+Stack and queues:
+- Stack has a FILO (first in last out) basis. It's like placing items into a container and taking it out. 
+- Stack: push (add), pop (remove), isEmpty, isFull, peek (view the top item without removing it)
+- Queue has a FIFO (first in first out) basis. It's like queuing up to buy food. The first at the queue gets it first.
+- Queue: enqueue to add, dequeue to remove. 
+- Queue: for peek, view the top item is the one that is about to get out wihtout removing it.
+
+
+
+Trees:
+- 
