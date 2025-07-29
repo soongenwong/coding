@@ -1,3 +1,5 @@
+Time Complexity = time it takes to complete the computations of an algorithm
+
 O(n): Linear
 O(logn): Binary search
 O(n^2): For loop within a for loop
@@ -8,3 +10,8 @@ O(1): constant time, time complexity does not grow with the size of n
 O(n)
 O(logn): logarithmic search, marginal increases in time for new inputs
 O(n^2): the square of n for the amount of time
+
+
+
+Practice questions:
+1. time complexity: O(n) because the for loop iterates through a portion of the array that scales with the input size 'n'.

@@ -22,4 +22,18 @@ Stack and queues:
 
 
 Trees:
-- 
+- Root node, parent, child, sibling, leaf node
+- Size of tree is the total number of nodes
+- Binary trees
+- Trees are used to store data in hierarchical fashion
+- Very efficient in inserting and deleting data. 
+- Depth first search (DFS): top to bottom sequentially (from left to right)
+- Breadth first search (BFS): search nodes on the same level from top to bottom. 
+- Every node has a maximum of 2 child nodes
+- Values less than the node are placed in left child node, values greater placed in right child node
+- Key, left node, right node, lookup method, insertion, removal. 
+
+
+
+Creating a class through the use of capital T as in Stack<T>, is an example of "generics". 
+T can be integer, string, or any other type. 

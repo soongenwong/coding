@@ -1,0 +1,24 @@
+Data structure models an object so that it can be stored into computer memory.
+Data structure can be passed to a function, returned as a result and generally treated like any other variable.
+
+Linear data structure: array, queue, stack, linked list
+Non-linear data structure: tree, graph
+
+Strings:
+Mutability: ability to change a string after it has been created.
+Immutability: cannot change the string after it is created (python, javascript, java)
+
+Purpose of parsing a string is to remove items from a string not based on a given format. 
+
+You will alwyays use a for loop for arrays. 
+
+Matrix is a 2-dimensional array
+
+
+
+Objects: Object Oriented Programming (OOP)
+- Code is encapsulated into objects, and these objects then interact with one another
+
+Inheritance for objects:
+- create a class that holds all the common attributes, and each object can inherit them.
+- Polymorphism (one shape, many forms)

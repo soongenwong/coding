@@ -1,6 +1,6 @@
 Space Complexity = input space(memory for data) + auxiliary space(extra memory)
 
-When calculating Space complexity in terms of Big O notation, it follows the same format as Time Complexity. 
+Space Complexity: The amount of memory an algorithm uses. It's like the **storage space**. 
 
 Creating a new array leads to the use of more memory thus it would lead to a higher space complexity value, as compared to changing values in an array.
 
