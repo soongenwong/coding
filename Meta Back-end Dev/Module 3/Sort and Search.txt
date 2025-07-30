@@ -1,0 +1,71 @@
+Sorting Algorithms:
+- Sort from smallest value to largest value. 
+- Selection sort: Finds the smallest value in the whole list and then swap places. 
+- Insertion sort: Compares the 2 consecutive values and then sorts, and then move down the line. 
+- Quick sort: selects a pivot, and then values less than the pivot move to left, values greater than pivot move to right.
+
+- Selection sort time complexity: O(n^2). Space complexity: O(1)
+
+for (i = 0; i < n - 1; i++) {
+    int min_index = i;
+    for (j = i + 1; j < n; j++) {
+        if (List[j] < List[min_index]) {
+            min_index = j;
+        }
+    }
+    // Swap the elements
+    swap(List[i], List[min_index]);
+}
+
+- Quick sort time complexity: worst case is O(n^2), average and best case is O(n log n). Space complexity: O(n)
+
+// QuickSort function
+void QuickSort(int List[], int low, int high) {
+    if (low < high) {
+        int pivot = Partition(List, low, high); // Partition the list and get pivot
+        QuickSort(List, low, pivot - 1);       // Recursively sort the left subarray
+        QuickSort(List, pivot + 1, high);      // Recursively sort the right subarray
+    }
+}
+
+// Partition function
+int Partition(int List[], int low, int high) {
+    int pivot = List[high]; // Choose the last element as the pivot
+    int i = low - 1;        // Index for the smaller element
+
+    for (int j = low; j <= high - 1; j++) {
+        if (List[j] <= pivot) {
+            i++;
+            swap(List[i], List[j]); // Swap elements smaller than pivot to the left
+        }
+    }
+
+    swap(List[i + 1], List[high]); // Place pivot in the correct position
+    return (i + 1);                // Return the partition index
+}
+
+// Swap function (you can implement this as a utility function)
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+- Selection sort is simple but higher time complexity. 
+- Quick sort is more complex but lower time complexity. 
+
+
+
+Searching Algorithms:
+- Just to find a specific value in a collection, no sorting. 
+- Linear search: Search from the start of the index until an appropriate element is found. 
+- Stop when it finds the target.
+- Worst time complexity: O(n), space: O(n)
+- Binary search: Half the search space and search again. 
+- Much faster than linear search
+- Worst time complexity: O(log n), space: O(n)
+- Binary search can only be performed on a sorted dataset. 
+
+
+
+- Space complexity is the storage that you store from the for loops.
