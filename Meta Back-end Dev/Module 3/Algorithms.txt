@@ -1,0 +1,23 @@
+Divide and Conquer:
+- Dividing one value into many and then merging back into one. 
+- Parellelisation: Computers working on the same problem at the same time, speeding up computation. 
+- Memory management: Large problems can be processed in chunks, making it easier to handle data that doesn't fit in memory.
+
+
+
+Recursion:
+- Recursion is an alternative to loops. Recursion is like loop. 
+- Base case: the condition that stops the Recursion (loop)
+- Diminishing structure: each call works on a smaller or simpler problem. 
+- Recursive call: The function calls itself with the new input. 
+- Break complex problems into simpler, repeatable steps. 
+
+
+
+Dynamic Programming:
+- 
+
+
+
+Greedy Algorithms:
+- 
