@@ -1,0 +1,41 @@
+Hash tables:
+- Hash tables offer very quick lookups for an application. 
+- Hashing function to connect key and values
+- Key -> Hashing function -> Index -> Fixed-size Value
+- Hashing function: algorithm that converts a key into a fixed-size value for fast data lookup. 
+- Key to value with an index. 
+- Grow table for every occurence of a value to avoid collisions (same values), or use linked list. 
+- O(1) time searches using hashing function and index. 
+- For python, use hashmap, dictionary. 
+
+
+
+Heaps:
+- Like a tree but behaves like a queue. Has min and max value at root. O(1) time. 
+- Min heap: lowest value for root. Max heap: highest value for root.
+- insert, find_min, delete_min
+- efficiently manages prioritised items, like keeping the smallest or largest item at the top. 
+- lets you know which item is most important (smallest and largest value)
+
+
+
+Graphs:
+- Nodes connected by edges used to model relationships and networks. 
+- A graph is like a tree with connectors, but it is far more complex as it has no starting or ending point. 
+- Graphs are used to calculate the shortest path from one point to another point. 
+- Directed graph: edges have a direction. 
+- Weighted graph: edges have values (weights), such as distance or cost. 
+- Nodes (the points) and edges (the connection)
+
+
+
+In computer science, a clique is a subset of a graph that has strong internal connections and weak external ones. 
+
+In data structures in python, synchronisation means that the data structure can be accessed by only one process at a time. 
+
+A class is a blueprint for an object. 
+
+In relation to objects, instance variables are characteristics of the class. 
+
+TSV files use tabs to separate their data. 
+
