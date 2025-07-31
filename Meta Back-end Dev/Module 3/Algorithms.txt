@@ -7,17 +7,26 @@ Divide and Conquer:
 
 Recursion:
 - Recursion is an alternative to loops. Recursion is like loop. 
+- Useful for problems that naturally break down into similar sub problems. 
 - Base case: the condition that stops the Recursion (loop)
 - Diminishing structure: each call works on a smaller or simpler problem. 
 - Recursive call: The function calls itself with the new input. 
-- Break complex problems into simpler, repeatable steps. 
+- Break complex problems into simpler, repeatable steps, until you get a solution. 
 
 
 
 Dynamic Programming:
-- 
+- Break into smaller sub problems and store the solutions. 
+- Memoisation: stores results of sub problems. 
+- Use the stored solutions to build up the final solution. 
+- Considers all possible options and choose the best solution. 
 
 
 
 Greedy Algorithms:
-- 
+- Chooses the best immediate option. 
+- Fast and simple, but sometimes misses the perfect answer. 
+
+
+
+Quick sort is an example of divide and conquer. 
