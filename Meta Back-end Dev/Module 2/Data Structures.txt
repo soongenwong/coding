@@ -10,7 +10,7 @@ Immutability: cannot change the string after it is created (python, javascript, 
 
 Purpose of parsing a string is to remove items from a string not based on a given format. 
 
-You will alwyays use a for loop for arrays. 
+You will always use a for loop for arrays. 
 
 Matrix is a 2-dimensional array
 

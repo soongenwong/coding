@@ -18,6 +18,7 @@ Stack and queues:
 - Queue has a FIFO (first in first out) basis. It's like queuing up to buy food. The first at the queue gets it first.
 - Queue: enqueue to add, dequeue to remove. 
 - Queue: for peek, view the top item is the one that is about to get out wihtout removing it.
+- Peek function: view the value that is about to get removed first. 
 
 
 
