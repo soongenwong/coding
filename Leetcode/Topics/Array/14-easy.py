@@ -9,3 +9,6 @@ class Solution:
                 return ans
             ans += first[i]
         return ans
+
+    # sort and compare the first and last strings
+    # in a sorted list, the first value has index 0 and the last value has index -1
