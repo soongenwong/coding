@@ -32,4 +32,10 @@ class Solution:
         #if the two parantheses (the current close paranthesis and the latest paranthesis in stack) are not a valid combination, return false.
         # if stack is empty, return true.
 
+        # KV: Key, Values
+        # map closing bracket to it's corresponding opening bracket. (keys and values)
+        # if the character is an opening bracket, push it onto the stack. 
+        # if the character is a closing bracket, check if the stack is empty or if the top of the stack is not the matching opening bracket, then return false. 
+        # if the stack is empty, it means all brackets were closed correctly
+
         #summary: stack: check, hashmap: match.
