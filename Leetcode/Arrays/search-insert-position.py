@@ -30,3 +30,5 @@ class Solution:
         # if mid = target, return mid
         # if mid > target, right = mid - 1
         # if mid < target, left = mid + 1
+        # left and right are the indices. 
+        # return left because that is the position to insert the target value.
