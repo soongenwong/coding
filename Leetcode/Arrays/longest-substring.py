@@ -25,6 +25,7 @@ class Solution:
         # use sliding window and set
         # left is the pointer, max_length is the value to return
         # char_set holds the unique characters currently in the window. 
+        # char set is empty at the beginning
         # while s[right] in char set, there is a duplicate in the window, so remove s[left] 
         # add s[right] to char set
         # update max length
