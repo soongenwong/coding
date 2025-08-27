@@ -17,6 +17,7 @@ class Solution:
         # final solution
         # s[::-1] creates a reversed version of the list s
         # s[:] replace the contents of s with the contents on the right
+        # slice notation
         # s[::-1] , s[start:stop:step], no start or stop, so go from beginning to end, -1 so move backwards through the list.
 
 
