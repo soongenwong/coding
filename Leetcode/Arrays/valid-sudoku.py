@@ -28,3 +28,4 @@ class Solution:
         # if the spot is empty, continue searching
         # if the number is found in the default dict, return false
         # after you found the number, add it to default dict.
+        # [] is a dictionary lookup, () forms a tuple key - combines two numbers into a single key.
