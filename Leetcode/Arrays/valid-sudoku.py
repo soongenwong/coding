@@ -9,16 +9,15 @@ class Solution:
                 if board[r][c] == ".":
                     continue
                 
-                if board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in boxes[(r // 3, c // 3)]:
+                elif board[r][c] in rows[r] or board[r][c] in cols[c] or board[r][c] in boxes[(r // 3, c // 3)]:
                     return False
                 
-                rows[r].add(board[r][c])
-                cols[r].add(board[r][c])
-                boxes[(r // 3, c //3)].add(board[r][c])
-        
-        return True
-        
+                else:
+                    rows[r].add(board[r][c])
+                    cols[c].add(board[r][c])
+                    boxes[(r // 3, c // 3)]. add(board[r][c])
 
+        return True
 
         # initial plan
         # save the values in lists
