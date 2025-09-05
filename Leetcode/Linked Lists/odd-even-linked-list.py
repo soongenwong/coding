@@ -38,3 +38,24 @@ class Solution:
        # link current odd node to next odd -indexed node. 
        # move the odd pointer forward to the newly linked node. 
        # reconnect odd and even segments. 
+
+class Solution:
+   def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+       if not head: return None
+       
+       odd = head
+
+       evenHead = even = head.next
+       
+       while even and even.next:
+
+           odd.next = odd.next.next
+
+           odd = odd.next
+
+           even.next = even.next.next
+           even = even.next
+
+       odd.next = evenHead
+
+       return head     
