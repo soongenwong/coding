@@ -7,11 +7,13 @@
 
 /**
  * @class Item
- * @brief Represents an item with a supplier code, item code, and price.
+ * @brief Represents an item with supplier code, item code, and price.
  *
- * This class encapsulates the data for a single item, providing methods
- * to access its properties and display its information.
+ * This class encapsulates the details of an item including its supplier code,
+ * item code, and price. It provides methods to access these attributes and
+ * display the item information.
  */
+    
 class Item {
 public:
     /**
