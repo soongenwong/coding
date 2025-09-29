@@ -19,3 +19,5 @@ class Solution:
         # start with the smallest possible value for maxSum
         # if current sum is more than max, max will take current sum value
         # if current sum is less than 0, it won't help to help to increase the max sum.
+        # time complexity: O(n), loop through each element exactly once
+        # Space complexity: O(1), use a constant amount of variables regardless of input size
