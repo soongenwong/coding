@@ -13,7 +13,7 @@ class Solution:
         # final solution
         # temp computes the best choice between skipping and robbing the house. 
         # take the max of max_rob and prev_rob + cur_val
-        # now, max rob has the value of prev rob
-        # temp has the max_rob, best result so far
+        # now, prev rob will take the value of max rob
+        # max rob will take the value of temp
         # time complexity: O(n), loop through each house exactly once
         # Space complexity: O(1), use a constant amount of variables regardless of input size
