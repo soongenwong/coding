@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Builder Club - Imperial College London</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1E1E2E;
+            background-color: #FAFAFA;
+            overflow-x: hidden;
+        }
+
+
+        /* Different floating patterns for more dynamic movement */
+        @keyframes float1 {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(75vh) translateX(20px) rotate(90deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(50vh) translateX(-10px) rotate(180deg);
+                opacity: 0.6;
+            }
+            75% {
+                transform: translateY(25vh) translateX(15px) rotate(270deg);
+                opacity: 0.3;
+            }
+            95% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(0px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float2 {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0.8);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            30% {
+                transform: translateY(70vh) translateX(-25px) rotate(120deg) scale(1.1);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translateY(40vh) translateX(30px) rotate(240deg) scale(0.9);
+                opacity: 0.4;
+            }
+            80% {
+                transform: translateY(20vh) translateX(-15px) rotate(300deg) scale(1.0);
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(-15vh) translateX(0px) rotate(360deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        @keyframes float3 {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            8% {
+                opacity: 0.4;
+            }
+            20% {
+                transform: translateY(80vh) translateX(-20px) rotate(60deg);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translateY(60vh) translateX(25px) rotate(180deg);
+                opacity: 0.3;
+            }
+            60% {
+                transform: translateY(40vh) translateX(-30px) rotate(240deg);
+                opacity: 0.7;
+            }
+            80% {
+                transform: translateY(20vh) translateX(10px) rotate(300deg);
+                opacity: 0.4;
+            }
+            92% {
+                opacity: 0.1;
+            }
+            100% {
+                transform: translateY(-20vh) translateX(0px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Pulsing background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, #CD7F5F, transparent);
+            border-radius: 50%;
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 0.3; transform: scale(1); }
+        }
+
+        /* Ensure content is above floating emojis */
+        .header, .hero, .section, .footer {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2D2D3A 0%, #1E1E2E 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .club-logo-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .club-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #CD7F5F;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #CD7F5F;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Enhanced Animations */
+        .hero {
+            background: linear-gradient(135deg, #2D2D3A 0%, #1E1E2E 40%, #CD7F5F 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: grain 0.8s steps(8,end) infinite;
+            pointer-events: none;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            30% { transform: translate(3%, -15%); }
+            50% { transform: translate(12%, 9%); }
+            70% { transform: translate(9%, 4%); }
+            90% { transform: translate(-1%, 7%); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FFFFFF, #CD7F5F, #FFFFFF);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+
+        .imperial-logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .imperial-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(205, 127, 95, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(205, 127, 95, 0.4);
+        }
+
+        /* Main Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1E1E2E;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            border-radius: 2px;
+        }
+
+        .section-accent {
+            color: #CD7F5F;
+        }
+        
+/* Floating images (section-specific) */
+.floating-image {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.3;
+    pointer-events: none;
+    animation: floatAnim 15s infinite linear;
+}
+
+@keyframes floatAnim {
+    0% {
+        transform: translateY(100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-150px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Container to hold floating images */
+.floating-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1; /* behind content */
+}
+
+        /* About Section */
+        .about {
+            background: white;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(205, 127, 95, 0.15);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+.benefit-icon img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Interactive Element Section */
+        .interactive-section {
+            background: linear-gradient(135deg, #2D2D3A 0%, #1E1E2E 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Interactive Claude Terminal */
+        .claude-terminal {
+            background: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 2rem auto;
+            overflow: hidden;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .claude-terminal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: breathe 2s ease-in-out infinite;
+        }
+
+        .dot.red { background: #ff5f56; animation-delay: 0s; }
+        .dot.yellow { background: #ffbd2e; animation-delay: 0.3s; }
+        .dot.green { background: #27ca3f; animation-delay: 0.6s; }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.9); }
+        }
+
+        .terminal-title {
+            color: #999;
+            font-size: 0.9rem;
+            margin-left: 1rem;
+        }
+
+        .terminal-content {
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 1.5rem;
+            min-height: 300px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            opacity: 1;
+            animation: typeIn 0.5s ease-out forwards;
+        }
+
+        .terminal-line.claude {
+            color: #CD7F5F;
+        }
+
+        .terminal-line.user {
+            color: #00ff00;
+        }
+
+        .terminal-line.system {
+            color: #888;
+        }
+
+        .terminal-prompt {
+            color: #CD7F5F;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes typeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .terminal-input-area {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+            padding: 0.5rem;
+        }
+
+        .send-btn {
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(205, 127, 95, 0.3);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+/* Leadership Section */
+.leadership {
+    background: white;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.leader-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.leader-card:hover {
+    transform: translateY(-5px);
+}
+
+.leader-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid #F0F0F0;
+}
+
+.leader-title {
+    font-weight: 600;
+    color: #CD7F5F;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.leader-bio {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0.5rem 0 1.2rem;
+}
+
+.linkedin-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(45deg, #CD7F5F, #D4967A);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.linkedin-btn:hover {
+    transform: scale(1.05);
+}
+
+        /* Resources Section */
+        .resources {
+            background: white;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .resource-link {
+            display: block;
+            background: linear-gradient(45deg, #CD7F5F, #D4967A);
+            color: white;
+            padding: 1.5rem;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: left 0.3s ease;
+        }
+
+        .resource-link:hover::before {
+            left: 100%;
+        }
+
+        .resource-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* Join Section */
+        .join {
+            background: linear-gradient(135deg, #CD7F5F 0%, #D4967A 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .join h2 {
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1E1E2E;
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #CD7F5F;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #CD7F5F;
+            transform: translateX(5px);
+        }
+
+        /* Asset Placeholders */
+        .asset-placeholder {
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+
+            .emoji {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  
+    <!-- Background particles for extra flair -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-section">
+                <img src="https://img.icons8.com/?size=512&id=zQjzFjPpT2Ek&format.png" alt="Claude Builder Club Logo" class="club-logo-img">
+                <div class="club-title">Claude Builder Club @ Imperial</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <img src="https://g2z7g2s8.delivery.rocketcdn.me/wp-content/uploads/2024/05/claude.gif" alt="Imperial College London" class="imperial-logo-img">
+            
+            <h1>Claude Builder Club</h1>
+            <p class="tagline">Imperial College London's Premier AI Building Community</p>
+            <p>Learn, Build, and Innovate Responsibly with Claude AI</p>
+            
+            <div style="margin: 2rem 0;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform?pli=1" class="cta-button">Join the Club</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="floating-container">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 10%; animation-delay: 0s; animation-duration: 14s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 25%; animation-delay: 2s; animation-duration: 16s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 40%; animation-delay: 4s; animation-duration: 12s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 55%; animation-delay: 6s; animation-duration: 15s;">
+</div>
+
+        <div class="container">
+            <h2>About <span class="section-accent">Our Club</span></h2>
+            <div class="about-content">
+                <p> We're a community of students passionate about AI, dedicated to exploring the incredible possibilities of building with Claude.</p>
+                
+                <p>Are you a complete beginner curious about AI? Or an experienced developer looking to push the boundaries of what's possible with large language models? We have space for you! Our club provides a supportive environment to learn, experiment, and create amazing projects. Whether it's a chatbot, game, or app- we want to see it all!</p>
+                
+                
+                <!-- PLACEHOLDER: Team photo or club activities -->
+                <div class="asset-placeholder" style="margin: 2rem auto; max-width: 600px;">
+                    📸 PLACEHOLDER: Club team photo or activity images
+                </div>
+            </div>
+        </div>
+        </section>
+
+    <!-- What is Claude Section -->
+    <section class="section" style="background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);">
+        <div class="container">
+            <div class="floating-container">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 10%; animation-delay: 0s; animation-duration: 14s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 25%; animation-delay: 2s; animation-duration: 16s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 40%; animation-delay: 4s; animation-duration: 12s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 55%; animation-delay: 6s; animation-duration: 15s;">
+ 
+</div>
+
+</div>
+
+            <h2>What is <span class="section-accent">Claude?</span></h2>
+            <div class="about-content">
+                <p>Claude is an AI tool developed by Anthropic. It assists in coding, writing, data analysis and other creative tasks.</p>
+                
+                <p>At the heart of Anthropic's mission is AI safety and responsibility. AI should empower people to accomplish their goals more effectively while maintaining human agency and decision-making. Our club embraces these values, focusing on building applications that enhance human potential rather than creating dependency.</p>
+                
+                <p style="font-style: italic; margin-top: 1.5rem; color: #CD7F5F;">We're not just learning to use AI - we're learning to build with AI in ways that benefit everyone.</p>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="section benefits">
+            <div class="floating-container">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 10%; animation-delay: 0s; animation-duration: 14s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 25%; animation-delay: 2s; animation-duration: 16s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 40%; animation-delay: 4s; animation-duration: 12s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 55%; animation-delay: 6s; animation-duration: 15s;">
+    </div>
+    
+    <div class="container">
+            <h2>Why <span class="section-accent">Join Us?</span></h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="https://cdn.sanity.io/images/4zrzovbb/website/1c3d1af62032009538b8bf5864139ca124b06741-1000x1000.svg" alt="Hands-on Learning Icon">
+                    </div>
+                    <h3>FREE Resources</h3>
+                    <p>All members receive Claude Pro along with $50 in API Credits.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="https://cdn.sanity.io/images/4zrzovbb/website/62a36096dfc56239dd5f97f090e766cd12844ad8-332x332.svg" alt="Hands-on Learning Icon">
+                    </div>
+                    <h3>Community</h3>
+                    <p>Network with like-minded students, build lasting friendships in the AI community and participate in hackathons.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="https://cdn.sanity.io/images/4zrzovbb/website/39ada9836e2ffe1c3b0d394dd2f5b98b8142d3f6-500x500.svg" alt="Hands-on Learning Icon">
+                    </div>
+                    <h3>Expert Guidance</h3>
+                    <p>Learn from exclusive workshops by the Anthropic team and guest speakers from the AI industry.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <img src="https://cdn.sanity.io/images/4zrzovbb/website/a6d625a77911d792f8e94d011088b8077848ef10-1000x1000.svg" alt="Hands-on Learning Icon">
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Build actual projects, add them to your portfolio and contribute to the future of AI applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Element Section -->
+    <section class="section interactive-section">
+        <div class="container">
+            <h2>Experience <span style="color: #CD7F5F;">Claude</span> in Action</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.9;">Ask about our club! Click the suggestions or type your own question.</p>
+            
+            <div class="claude-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <div class="terminal-title">claude_chat_demo.py</div>
+                </div>
+                <div class="terminal-content" id="terminal-content">
+                    <div class="terminal-line system">Claude Builder Club Demo Terminal</div>
+                    <div class="terminal-line system">Type a question about our club or click a suggestion below!</div>
+                    <div class="terminal-line system">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+                </div>
+                <div class="terminal-input-area">
+                    <span class="terminal-prompt">user@claude-club:~$ </span>
+                    <input type="text" class="terminal-input" id="terminal-input" placeholder="Ask Claude about our club..." maxlength="100">
+                    <button class="send-btn" id="send-btn">Send</button>
+                </div>
+            </div>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <button class="cta-button suggestion-btn" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">What is Claude Builder Club?</button>
+                <button class="cta-button suggestion-btn" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">How do I join?</button>
+                <button class="cta-button suggestion-btn" style="font-size: 0.9rem; padding: 0.8rem 1.5rem;">What can I learn here?</button>
+            </div>
+        </div>
+    </section>
+<!-- Leadership Section -->
+<section id="leadership" class="section leadership">
+    <div class="floating-container">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 10%; animation-delay: 0s; animation-duration: 14s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 25%; animation-delay: 2s; animation-duration: 16s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 40%; animation-delay: 4s; animation-duration: 12s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 55%; animation-delay: 6s; animation-duration: 15s;">
+    </div>
+    <div class="container">
+        <h2>Leadership</h2>
+        <div class="leadership-grid">
+            
+            <!-- Card 1: Anousheh -->
+            <div class="leader-card">
+                <img src="https://via.placeholder.com/120" alt="Anousheh Arif" class="leader-photo">
+                <h3>Anousheh Arif</h3>
+                <p class="leader-title">President</p>
+                <p class="leader-bio">
+                    Claude Builder Ambassador. Leading the initiative as a creative who experiments and turns ideas into action - such as building a marketing chatbot with Claude. All with a non-technical background.
+                </p>
+                <a href="https://www.linkedin.com/in/anousheh-arif/" class="linkedin-btn">LinkedIn</a>
+            </div>
+
+            <!-- Card 2: Placeholder for Co-Lead -->
+            <div class="leader-card">
+                <img src="https://via.placeholder.com/120" alt="Co-Lead" class="leader-photo">
+                <h3>Soong En Wong</h3>
+                <p class="leader-title">Co-President</p>
+                <p class="leader-bio">
+                    Sample intro text for the co-lead goes here. Replace this once you've confirmed the person and their role.
+                </p>
+                <a href="https://www.linkedin.com/in/soongenwong/" class="linkedin-btn">LinkedIn</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+        </div>
+    </div>
+</section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="section resources">
+        <div class="floating-container">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 10%; animation-delay: 0s; animation-duration: 14s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 25%; animation-delay: 2s; animation-duration: 16s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 40%; animation-delay: 4s; animation-duration: 12s;">
+    <img class="floating-image" src="https://www.mescomputing.com/news/ai/media_13b863a9243381ff7394de5430fa38774577c1a90.png?width=750&format=png&optimize=medium" style="left: 55%; animation-delay: 6s; animation-duration: 15s;">
+    </div>
+        <div class="container">
+            <h2>Resources & <span class="section-accent">Learning</span></h2>
+            <div class="resources-grid">
+                <a href="#" class="resource-link">📚 Student Courses by Anthropic</a>
+                <a href="https://claude.com/product/overview" class="resource-link">💡 Meet Claude</a>
+                <a href="https://www.anthropic.com/learn/build-with-claude" class="resource-link">💻 API Guides</a>
+                <a href="https://www.anthropic.com/research" class="resource-link">📝 Latest Research at Anthropic</a>
+                
+            </div>
+            
+            <!-- PLACEHOLDER: Partner/Sponsor logos -->
+            <div style="text-align: center; margin: 3rem auto;">
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/6eBSHbLKuN0"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section id="join" class="section join">
+        <div class="container">
+            <h2>Ready to Build the Future?</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Join the Claude Builder Club today and start your AI journey with us!</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScP9LuFwiHEx806tv9zczjCIEzqO1Zjb-FjB4XWoa6BS1NNKQ/viewform?pli=1" class="cta-button" style="background: white; color: #CD7F5F;">Sign up Form</a>
+                <a href="#" class="cta-button" style="background: rgba(255,255,255,0.2);">Follow Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <a href="mailto:claude.builders@imperial.ac.uk">claude.builders@imperial.ac.uk</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#about">About Us</a>
+                    <a href="#benefits">Benefits</a>
+                    <a href="#resources">Resources</a>
+                    <a href="#join">Join</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <a href="#">Linkedin</a>
+                    <a href="#">Instagram</a>
+                </div>
+                <div class="footer-section">
+                    <h3>More Info</h3>
+                    <a href="https://www.anthropic.com">Anthropic</a>
+                    <a href="https://www.imperial.ac.uk">Imperial College London</a>
+                    <a href="https://www.imperialcollegeunion.org/activities/a-to-z">Student Societies</a>
+                </div>
+            </div>
+            <hr style="border: none; border-top: 1px solid #333; margin: 2rem 0;">
+            <p>&copy; 2025 Claude Builder Club - Imperial College London. All rights reserved.</p>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">
+                Building the future, one Claude project at a time. ❤️
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles on load
+        document.addEventListener('DOMContentLoaded', createParticles);
+
+        // JavaScript for interactive Claude terminal demo
+        class ClaudeDemo {
+            constructor() {
+                this.terminal = document.getElementById('terminal-content');
+                this.input = document.getElementById('terminal-input');
+                this.sendBtn = document.getElementById('send-btn');
+                this.suggestions = document.querySelectorAll('.suggestion-btn');
+                
+                this.responses = {
+                    'what is claude builder club': {
+                        text: "Claude Builder Club is Imperial College London's premier AI community! We're a group of passionate students who explore the amazing possibilities of building with Claude AI. From beginners to experts, we provide workshops, hackathons, and collaborative projects to help everyone learn and create innovative AI applications.",
+                        delay: 1000
+                    },
+                    'how do i join': {
+                        text: "Joining is super easy! You can:\n1. Click 'Join Discord' to join our community server\n2. Fill out our sign-up form to get on the mailing list\n3. Follow us on social media for updates\n4. Attend our next workshop or event\n\nWe welcome everyone - no prior AI experience required!",
+                        delay: 800
+                    },
+                    'what can i learn here': {
+                        text: "So much! Here's what you can dive into:\n• Claude API fundamentals and advanced techniques\n• Building chatbots and AI assistants\n• Natural language processing projects\n• AI-powered web applications\n• Prompt engineering best practices\n• Integration with other tools and services\n• Real-world project development\n\nOur hands-on approach means you'll be building from day one!",
+                        delay: 1200
+                    },
+                    'tell me more': {
+                        text: "The Claude Builder Club was founded to bridge the gap between AI theory and practical application. We host workshops, hackathons, and collaborate on open-source projects. Our members have built everything from study assistants to research tools to creative writing aids. We also regularly host guest speakers from Anthropic and other AI companies!",
+                        delay: 1000
+                    },
+                    'when do you meet': {
+                        text: "We have several types of meetings:\n• Weekly workshops: Thursdays 6-8 PM in the Computing building\n• Monthly hackathons: First Saturday of every month\n• Study groups: Flexible times organized through Discord\n• Special events: Check our calendar for guest speakers and project showcases\n\nAll events are beginner-friendly with different skill tracks!",
+                        delay: 900
+                    },
+                    'who can join': {
+                        text: "Everyone! While we're based at Imperial College London, we welcome:\n• Imperial students from any department\n• Research staff and faculty\n• Visiting researchers\n• Industry partners and alumni\n\nNo prior programming experience required - just curiosity about AI and enthusiasm to learn and build cool things together!",
+                        delay: 1100
+                    }
+                };
+
+                this.initializeEventListeners();
+                this.animateInitialLines();
+            }
+
+            initializeEventListeners() {
+                this.sendBtn.addEventListener('click', () => this.handleUserInput());
+                this.input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.handleUserInput();
+                });
+                
+                this.suggestions.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.input.value = e.target.textContent;
+                        this.handleUserInput();
+                    });
+                });
+            }
+
+            animateInitialLines() {
+                const lines = this.terminal.querySelectorAll('.terminal-line');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                    }, index * 200);
+                });
+            }
+
+            handleUserInput() {
+                const userMessage = this.input.value.trim().toLowerCase();
+                if (!userMessage) return;
+
+                this.sendBtn.disabled = true;
+                this.addUserMessage(this.input.value.trim());
+                this.input.value = '';
+
+                // Find matching response
+                const response = this.findBestResponse(userMessage);
+                
+                setTimeout(() => {
+                    this.addClaudeResponse(response.text);
+                    this.sendBtn.disabled = false;
+                    this.input.focus();
+                }, response.delay);
+            }
+
+            findBestResponse(userMessage) {
+                // Direct match
+                if (this.responses[userMessage]) {
+                    return this.responses[userMessage];
+                }
+
+                // Keyword matching
+                if (userMessage.includes('join') || userMessage.includes('sign up')) {
+                    return this.responses['how do i join'];
+                } else if (userMessage.includes('learn') || userMessage.includes('teach') || userMessage.includes('skills')) {
+                    return this.responses['what can i learn here'];
+                } else if (userMessage.includes('meet') || userMessage.includes('when') || userMessage.includes('schedule')) {
+                    return this.responses['when do you meet'];
+                } else if (userMessage.includes('who') || userMessage.includes('eligible') || userMessage.includes('requirements')) {
+                    return this.responses['who can join'];
+                }
+
+                // Default response
+                return {
+                    text: "I'd love to tell you more about the Claude Builder Club. We're all about hands-on AI learning, building cool projects, and creating a supportive community for everyone interested in Claude and AI development. Feel free to ask about joining, our activities, or what you can learn with us!",
+                    delay: 800
+                };
+            }
+
+            addUserMessage(message) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line user';
+                line.innerHTML = `<span class="terminal-prompt">user@claude-club:~$</span> ${message}`;
+                this.terminal.appendChild(line);
+                this.scrollToBottom();
+            }
+
+            addClaudeResponse(response) {
+                const line = document.createElement('div');
+                line.className = 'terminal-line claude';
+                line.innerHTML = `<span style="color: #CD7F5F;">Claude:</span> ${response.replace(/\n/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')}`;
+                this.terminal.appendChild(line);
+                this.scrollToBottom();
+            }
+
+            scrollToBottom() {
+                this.terminal.scrollTop = this.terminal.scrollHeight;
+            }
+        }
+
+        // Initialize the Claude demo when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new ClaudeDemo();
+        });
+
+        // Add some interactive hover effects
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add parallax effect to hero section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
